@@ -15,7 +15,7 @@ public class Register extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(new Color(0x009116));
+        panel.setBackground(new Color(0x0DBFAE));
         add(panel);
 
         JLabel titleLabel = new JLabel("Register To Uzima Borehole Drilling System");
@@ -32,7 +32,7 @@ public class Register extends JFrame {
         JTextField usernameField = new JTextField(15);
         usernameField.setBounds(180, 60, 200, 25);
         usernameField.setForeground(Color.BLACK);
-        usernameField.setBackground(new Color(0x00F19C));
+        usernameField.setBackground(new Color(0x47E1E8));
         panel.add(usernameField);
 
         JLabel emailLabel = new JLabel("Email:");
@@ -43,7 +43,7 @@ public class Register extends JFrame {
         JTextField emailField = new JTextField(15);
         emailField.setBounds(180, 100, 200, 25);
         emailField.setForeground(Color.BLACK);
-        emailField.setBackground(new Color(0x00F19C));
+        emailField.setBackground(new Color(0x47E1E8));
         panel.add(emailField);
 
         JLabel passwordLabel = new JLabel("Password:");
@@ -53,7 +53,7 @@ public class Register extends JFrame {
         JPasswordField passwordField = new JPasswordField(15);
         passwordField.setBounds(180, 140, 200, 25);
         passwordField.setForeground(Color.BLACK);
-        passwordField.setBackground(new Color(0x00F19C));
+        passwordField.setBackground(new Color(0x47E1E8));
         panel.add(passwordField);
 
         JLabel confirmPasswordLabel = new JLabel("Confirm Password:");
@@ -63,12 +63,12 @@ public class Register extends JFrame {
         JPasswordField confirmPasswordField = new JPasswordField(15);
         confirmPasswordField.setBounds(180, 180, 200, 25);
         confirmPasswordField.setForeground(Color.BLACK);
-        confirmPasswordField.setBackground(new Color(0x00F19C));
+        confirmPasswordField.setBackground(new Color(0x47E1E8));
         panel.add(confirmPasswordField);
 
         JButton btnRegister = new JButton("REGISTER");
         btnRegister.setBounds(225, 220, 100, 25);
-        btnRegister.setBackground(new Color(0x00F19C));
+        btnRegister.setBackground(new Color(0x47E1E8));
         panel.add(btnRegister);
 
         JLabel loginLabel = new JLabel("Already have an account? Sign In");

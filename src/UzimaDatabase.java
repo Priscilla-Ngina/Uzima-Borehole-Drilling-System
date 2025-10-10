@@ -68,4 +68,25 @@ public class UzimaDatabase {
     }
     // Login logic
 
+
+    // Client
+    // Insert a client into the clients table
+    public static void insertClient (String fullname, String phone, String address, String borehole_location) {
+        String sql = "INSERT INTO clients (fullname, address, phone, borehole_location) VALUES (?, ?, ?, ?)";
+        try (Connection connection = connect(); PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1,fullname);
+            pstmt.setString(2,phone);
+            pstmt.setString(3,address);
+            pstmt.setString(4,borehole_location);
+
+            // Execute the insert command
+            pstmt.executeUpdate();
+            System.out.println("Client details inserted successfully!");
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error while inserting client details!");
+            e.printStackTrace();
+        }
+    }
+    // Client
+
 }

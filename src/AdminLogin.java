@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Login extends JFrame{
-    public Login(){
+public class AdminLogin extends JFrame{
+    public AdminLogin(){
         setTitle("Uzima Borehole Drilling System");
         setSize(500,350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -16,7 +16,7 @@ public class Login extends JFrame{
         // Create a panel with null layout for custom component positioning
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(new Color(0x0DBFAE));
+        panel.setBackground(new Color(0x267516));
         add(panel);
 
         JLabel titleLabel = new JLabel("Welcome To Uzima Borehole Drilling System");
@@ -32,7 +32,7 @@ public class Login extends JFrame{
         JTextField usernameField = new JTextField(15);
         usernameField.setBounds(160, 120, 200, 25);
         usernameField.setForeground(Color.BLACK);
-        usernameField.setBackground(new Color(0x47E1E8));
+        usernameField.setBackground(new Color(0x00F19C));
         panel.add(usernameField);
 
         JLabel passwordLabel = new JLabel("Password:");
@@ -42,12 +42,12 @@ public class Login extends JFrame{
         JPasswordField passwordField = new JPasswordField(15);
         passwordField.setBounds(160, 160, 200, 25);
         passwordField.setForeground(Color.BLACK);
-        passwordField.setBackground(new Color(0x47E1E8));
+        passwordField.setBackground(new Color(0x00F19C));
         panel.add(passwordField);
 
         JButton btnLogin = new JButton("LOGIN");
         btnLogin.setBounds(210, 200, 100, 30);
-        btnLogin.setBackground(new Color(0x47E1E8));
+        btnLogin.setBackground(new Color(0x00F19C));
         panel.add(btnLogin);
 
         JLabel registerLabel = new JLabel("No account? Sign up");
@@ -59,7 +59,7 @@ public class Login extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 new Register().setVisible(true);
-                Login.this.dispose();
+                AdminLogin.this.dispose();
             }
 
             @Override
@@ -90,13 +90,13 @@ public class Login extends JFrame{
                     boolean isValidUser = UzimaDatabase.checkCredentials(enteredUsername, enteredPassword);
 
                     if (isValidUser) {
-                        JOptionPane.showMessageDialog(Login.this, "Login successful!");
+                        JOptionPane.showMessageDialog(AdminLogin.this, "Login successful!");
                         // Proceed to the dashboard or main application
                         ClientDashboard clientDashboard = new ClientDashboard();
                         clientDashboard.setVisible(true);
-                        Login.this.dispose();
+                        AdminLogin.this.dispose();
                     } else {
-                        JOptionPane.showMessageDialog(Login.this, "Incorrect username or password. Please try again.");
+                        JOptionPane.showMessageDialog(AdminLogin.this, "Incorrect username or password. Please try again.");
                     }
                 }
             }
@@ -106,7 +106,7 @@ public class Login extends JFrame{
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Login();
+                new AdminLogin();
             }
         });
     }

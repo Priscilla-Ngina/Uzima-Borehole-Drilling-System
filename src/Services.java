@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class Services extends JFrame {
     public Services() {
         setTitle("Uzima Borehole - Client");
-        setSize(650, 650);
+        setSize(650, 670);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -54,7 +54,7 @@ public class Services extends JFrame {
         typePumpCombo.setBackground(Color.WHITE);
         panel.add(typePumpCombo);
 
-        JLabel costLabel = new JLabel("Cost:");
+        JLabel costLabel = new JLabel("Pump Cost:");
         costLabel.setBounds(180, 260, 150, 25);
         costLabel.setForeground(Color.WHITE);
         panel.add(costLabel);
@@ -63,6 +63,51 @@ public class Services extends JFrame {
         costField.setForeground(Color.BLACK);
         costField.setBackground(Color.WHITE);
         panel.add(costField);
+
+        JLabel plumbingLabel = new JLabel("Plumbing Fee:");
+        plumbingLabel.setBounds(180, 320, 150, 25);
+        plumbingLabel.setForeground(Color.WHITE);
+        panel.add(plumbingLabel);
+        JTextField plumbingField = new JTextField(30);
+        plumbingField.setBounds(180, 350, 300, 25);
+        plumbingField.setForeground(Color.BLACK);
+        plumbingField.setBackground(Color.WHITE);
+        panel.add(plumbingField);
+
+        JLabel pumpMaintenanceLabel = new JLabel("Pump Maintenance Fee:");
+        pumpMaintenanceLabel.setBounds(180, 380, 150, 25);
+        pumpMaintenanceLabel.setForeground(Color.WHITE);
+        panel.add(pumpMaintenanceLabel);
+        JTextField pumpMaintenanceField = new JTextField(30);
+        pumpMaintenanceField .setBounds(180, 410, 300, 25);
+        pumpMaintenanceField .setForeground(Color.BLACK);
+        pumpMaintenanceField .setBackground(Color.WHITE);
+        panel.add(pumpMaintenanceField );
+
+        JLabel taxLabel = new JLabel("Tax:");
+        taxLabel.setBounds(180, 440, 150, 25);
+        taxLabel.setForeground(Color.WHITE);
+        panel.add(taxLabel);
+        JTextField taxField = new JTextField(30);
+        taxField .setBounds(180, 470, 300, 25);
+        taxField .setForeground(Color.BLACK);
+        taxField .setBackground(Color.WHITE);
+        panel.add(taxField );
+
+        JLabel totalFeeLabel = new JLabel("Total Fee:");
+        totalFeeLabel.setBounds(180, 500, 150, 25);
+        totalFeeLabel.setForeground(Color.WHITE);
+        panel.add(totalFeeLabel);
+        JTextField totalFeeField = new JTextField(30);
+        totalFeeField .setBounds(180, 530, 300, 25);
+        totalFeeField .setForeground(Color.BLACK);
+        totalFeeField .setBackground(Color.WHITE);
+        panel.add(totalFeeField );
+
+        JButton btnSubmit = new JButton("SUBMIT");
+        btnSubmit.setBounds(230, 580, 100, 25);
+        btnSubmit.setBackground(new Color(0x47E1E8));
+        panel.add(btnSubmit);
 
 
         typeDrillingCombo.addActionListener(new ActionListener() {

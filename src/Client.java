@@ -11,6 +11,32 @@ public class Client extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+        // Create menu bar
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+
+        // Create menu
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+
+        // Create menu items
+        JMenuItem menuItemGoBack = new JMenuItem("Back");
+        JMenuItem menuItemSignOut = new JMenuItem("Logout");
+
+        // Add menu items to menu
+        menu.add(menuItemGoBack);
+        menu.add(menuItemSignOut);
+
+        menuItemGoBack.addActionListener(e -> {
+            new ClientDashboard().setVisible(true);
+            Client.this.dispose();
+        });
+
+        menuItemSignOut.addActionListener(e -> {
+            new Login().setVisible(true);
+            Client.this.dispose();
+        });
+
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(new Color(0x0DBFAE));
@@ -121,14 +147,35 @@ public class Client extends JFrame {
                 String address = addressField.getText().trim();
                 String boreholeLocation = locationField.getText().trim();
 
+                // Phone validation
+                String validPhone = "\\+?[0-9\\-\\s]{6,15}";
+
                 if (name.isEmpty() || address.isEmpty() || phone.isEmpty() || boreholeLocation.isEmpty()) {
                     JOptionPane.showMessageDialog(Client.this, "Please fill all fields.", "Validation", JOptionPane.WARNING_MESSAGE);
                     return;
-                }
+                }else {
+                    if (!phone.matches(validPhone)) {
+                        JOptionPane.showMessageDialog(Client.this, "Please enter a valid phone number.", "Validation", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    try {
+                        // Check if the username or email already exists
+                        if (UzimaDatabase.clientExists(name, phone)) {
+                            JOptionPane.showMessageDialog(Client.this, "Client or phone already exists. Please use a different one.");
+                        } else {
+                            // Insert the user into the database
+                            UzimaDatabase.insertClient(name, phone, address, boreholeLocation);
+                            JOptionPane.showMessageDialog(Client.this, "Client Details successful!");
 
-                if (!phone.matches("\\+?[0-9\\-\\s]{6,15}")) {
-                    JOptionPane.showMessageDialog(Client.this, "Please enter a valid phone number.", "Validation", JOptionPane.WARNING_MESSAGE);
-                    return;
+                            // Open the login window after successful registration
+                            ClientDashboard clientDashBoard = new ClientDashboard();
+                            clientDashBoard.setVisible(true);
+                            Client.this.dispose();
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(Client.this, "An error occurred while submitting.");
+                    }
                 }
             }
         });

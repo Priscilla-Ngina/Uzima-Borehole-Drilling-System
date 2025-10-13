@@ -71,8 +71,22 @@ public class UzimaDatabase {
 
     // Client
     // Insert a client into the clients table
+
+    public static boolean clientExists(String fullname, String phone) {
+        String sql = "SELECT * FROM clients WHERE fullname = ? OR phone = ?";
+        try (Connection connection = connect(); PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, fullname);
+            pstmt.setString(2, phone);
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next();  // If a result is returned, the client exists
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static void insertClient (String fullname, String phone, String address, String borehole_location) {
-        String sql = "INSERT INTO clients (fullname, address, phone, borehole_location) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO clients (fullname, phone, address, borehole_location) VALUES (?, ?, ?, ?)";
         try (Connection connection = connect(); PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1,fullname);
             pstmt.setString(2,phone);
@@ -89,4 +103,27 @@ public class UzimaDatabase {
     }
     // Client
 
+
+    // Service
+    public static void insertServices (String typeDrilling, String downPayment, String typePump, String pumpCost, String plumbing, String maintenance, String tax, String totalFee ) {
+        String sql = "INSERT INTO clients (fullname, phone, address, borehole_location) VALUES (?, ?, ?, ?,?,?,?,?)";
+        try (Connection connection = connect(); PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1,typeDrilling);
+            pstmt.setString(2,downPayment);
+            pstmt.setString(3,typePump);
+            pstmt.setString(4,pumpCost);
+            pstmt.setString(5,plumbing);
+            pstmt.setString(6,maintenance);
+            pstmt.setString(7,tax);
+            pstmt.setString(8,totalFee);
+
+            // Execute the insert command
+            pstmt.executeUpdate();
+            System.out.println("Services details inserted successfully!");
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error while inserting services details!");
+            e.printStackTrace();
+        }
+    }
+    // Service
 }

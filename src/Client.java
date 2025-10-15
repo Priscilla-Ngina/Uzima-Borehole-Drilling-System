@@ -167,7 +167,7 @@ public class Client extends JFrame {
                             UzimaDatabase.insertClient(name, phone, address, boreholeLocation);
                             JOptionPane.showMessageDialog(Client.this, "Client Details successful!");
 
-                            // Open the login window after successful registration
+                            // Back to Dashboard
                             ClientDashboard clientDashBoard = new ClientDashboard();
                             clientDashBoard.setVisible(true);
                             Client.this.dispose();

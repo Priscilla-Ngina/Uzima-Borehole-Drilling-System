@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 public class ClientDashboard extends JFrame {
     public ClientDashboard() {
         setTitle("Uzima - Client Dashboard");
-        setSize(711, 480);
+        setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);

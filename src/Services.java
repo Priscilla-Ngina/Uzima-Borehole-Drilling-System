@@ -139,6 +139,56 @@ public class Services extends JFrame {
                 }
             }
         });
+
+        btnSubmit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String typeDrilling = typeDrillingCombo.getSelectedItem().toString().trim();
+                String downPayment = downPaymentField.getText().trim();
+                String typePump = typePumpCombo.getSelectedItem().toString().trim();
+                String pumpCost = costField.getText().trim();
+                String plumbing = plumbingField.getText().trim();
+                String maintenance = pumpMaintenanceField.getText().trim();
+
+                if (typeDrilling.isEmpty() || downPayment.isEmpty() || typePump.isEmpty() || pumpCost.isEmpty()) {
+                    JOptionPane.showMessageDialog(Services.this, "Please fill in all required fields.", "Validation", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                try {
+                    // Parse values safely and handle optional fields
+                    double downPaymentVal = Double.parseDouble(downPayment.replaceAll("[^0-9.]", ""));
+                    double pumpCostVal = Double.parseDouble(pumpCost.replaceAll("[^0-9.]", ""));
+                    double plumbingVal = plumbing.isEmpty() ? 0 : Double.parseDouble(plumbing.replaceAll("[^0-9.]", ""));
+                    double maintenanceVal = maintenance.isEmpty() ? 0 : Double.parseDouble(maintenance.replaceAll("[^0-9.]", ""));
+
+                    // Calculate total before tax
+                    double totalBeforeTax = downPaymentVal + pumpCostVal + plumbingVal + maintenanceVal;
+
+                    // Calculate tax (16%)
+                    double tax = totalBeforeTax * 0.16;
+
+                    // Final total
+                    double totalFee = totalBeforeTax + tax;
+
+                    // Display results
+                    taxField.setText(String.format("%.2f", tax));
+                    totalFeeField.setText(String.format("%.2f", totalFee));
+
+                    // Insert the services into the database
+                    UzimaDatabase.insertServices(typeDrilling, downPayment, typePump, pumpCost,plumbing,maintenance, String.format("%.2f", tax), String.format("%.2f", totalFee));
+                    JOptionPane.showMessageDialog(Services.this, "Service details submitted successfully!");
+
+                    // Back to Dashboard
+                    ClientDashboard clientDashBoard = new ClientDashboard();
+                    clientDashBoard.setVisible(true);
+                    Services.this.dispose();
+
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(Services.this, "Please ensure all fees are numeric values.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {

@@ -106,7 +106,7 @@ public class UzimaDatabase {
 
     // Service
     public static void insertServices (String typeDrilling, String downPayment, String typePump, String pumpCost, String plumbing, String maintenance, String tax, String totalFee ) {
-        String sql = "INSERT INTO clients (fullname, phone, address, borehole_location) VALUES (?, ?, ?, ?,?,?,?,?)";
+        String sql = "INSERT INTO services (typeDrilling, downPayment, typePump, pumpCost, plumbing, maintenance, tax, totalFee) VALUES (?, ?, ?, ?,?,?,?,?)";
         try (Connection connection = connect(); PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1,typeDrilling);
             pstmt.setString(2,downPayment);

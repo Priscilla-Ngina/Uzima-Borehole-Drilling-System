@@ -5,98 +5,101 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class AdminLogin extends JFrame{
-    public AdminLogin(){
+public class AdminLogin extends JFrame {
+    public AdminLogin() {
         setTitle("Uzima Borehole Drilling System");
         setSize(500,350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // Create a panel with null layout for custom component positioning
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+
+        JMenuItem menuItemAdmin = new JMenuItem("User");
+        menu.add(menuItemAdmin);
+
+        menuItemAdmin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Login().setVisible(true);
+                AdminLogin.this.dispose();
+            }
+        });
+
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(new Color(0x267516));
+        panel.setBackground(new Color(0x0DBFAE));
         add(panel);
 
-        JLabel titleLabel = new JLabel("Welcome To Uzima Borehole Drilling System");
-        titleLabel.setBounds(70, 50, 370, 25);
-        titleLabel.setForeground(Color.WHITE);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        panel.add(titleLabel);
-
-        JLabel usernameLabel = new JLabel("Username:");
-        usernameLabel.setBounds(40, 120, 150, 25);
-        usernameLabel.setForeground(Color.BLACK);
-        panel.add(usernameLabel);
-        JTextField usernameField = new JTextField(15);
-        usernameField.setBounds(160, 120, 200, 25);
-        usernameField.setForeground(Color.BLACK);
-        usernameField.setBackground(new Color(0x00F19C));
-        panel.add(usernameField);
+        JLabel uniqueKeyLabel = new JLabel("Unique Key:");
+        uniqueKeyLabel.setBounds(10, 120, 200, 25);
+        uniqueKeyLabel.setForeground(Color.BLACK);
+        panel.add(uniqueKeyLabel);
+        JTextField uniqueKeyField = new JTextField(15);
+        uniqueKeyField.setBounds(190, 120, 200, 25);
+        uniqueKeyField.setForeground(Color.BLACK);
+        uniqueKeyField.setBackground(new Color(0x47E1E8));
+        panel.add(uniqueKeyField);
 
         JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setBounds(40, 160, 150, 25);
+        passwordLabel.setBounds(10, 160, 150, 25);
         passwordLabel.setForeground(Color.BLACK);
         panel.add(passwordLabel);
         JPasswordField passwordField = new JPasswordField(15);
-        passwordField.setBounds(160, 160, 200, 25);
+        passwordField.setBounds(190, 160, 200, 25);
         passwordField.setForeground(Color.BLACK);
-        passwordField.setBackground(new Color(0x00F19C));
+        passwordField.setBackground(new Color(0x47E1E8));
         panel.add(passwordField);
 
         JButton btnLogin = new JButton("LOGIN");
-        btnLogin.setBounds(210, 200, 100, 30);
-        btnLogin.setBackground(new Color(0x00F19C));
+        btnLogin.setBounds(230, 200, 100, 30);
+        btnLogin.setBackground(new Color(0x47E1E8));
         panel.add(btnLogin);
 
         JLabel registerLabel = new JLabel("No account? Sign up");
-        registerLabel.setBounds(190, 260, 230, 25);
+        registerLabel.setBounds(210, 260, 230, 25);
         registerLabel.setForeground(Color.BLACK);
         panel.add(registerLabel);
 
         registerLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new Register().setVisible(true);
+                new AdminRegister().setVisible(true);
                 AdminLogin.this.dispose();
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                // Optional: underline the text when the mouse hovers over it
                 registerLabel.setText("<html><u>No account? Sign up</u></html>");
-                registerLabel.setForeground(new Color(0x00FBF3));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                // Remove underline when the mouse exits
-                registerLabel.setText("No account? Sign Up");
-                registerLabel.setForeground(Color.BLACK);
+                registerLabel.setText("No account? Sign up");
             }
         });
 
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String enteredUsername = usernameField.getText();
+                String enteredUniqueKey = uniqueKeyField.getText();
                 String enteredPassword = new String(passwordField.getPassword());
 
-                if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
+                if (enteredUniqueKey.isEmpty() || enteredPassword.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please fill all the fields.");
                 } else {
-                    // Always check the database for valid credentials
-                    boolean isValidUser = UzimaDatabase.checkCredentials(enteredUsername, enteredPassword);
-
-                    if (isValidUser) {
-                        JOptionPane.showMessageDialog(AdminLogin.this, "Login successful!");
-                        // Proceed to the dashboard or main application
-                        ClientDashboard clientDashboard = new ClientDashboard();
-                        clientDashboard.setVisible(true);
+                    boolean isValidAdmin= UzimaDatabase.checkAdminCredentials(enteredUniqueKey, enteredPassword);
+                    if (isValidAdmin) {
+                        JOptionPane.showMessageDialog(AdminLogin.this, "Admin Login successful!");
+                        AdminPanel adminPanel = new AdminPanel();
+                        adminPanel.setVisible(true);
                         AdminLogin.this.dispose();
                     } else {
-                        JOptionPane.showMessageDialog(AdminLogin.this, "Incorrect username or password. Please try again.");
+                        JOptionPane.showMessageDialog(AdminLogin.this, "Incorrect unique key or password.");
                     }
                 }
             }

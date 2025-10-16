@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a082b6ff-8762-4645-b0c4-7a9ec6fcd60c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard$LabelMouseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard$LabelMouseListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/ClientDashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/UzimaDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/UzimaDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UzimaDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UzimaDatabase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,19 +36,25 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.AdminLogin.executor": "Run",
     "Application.AdminPanel.executor": "Run",
+    "Application.AdminRegister.executor": "Run",
     "Application.Client.executor": "Run",
     "Application.ClientDashboard.executor": "Run",
+    "Application.Login.executor": "Run",
     "Application.Services.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -62,6 +62,7 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -73,6 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1760519662829</updated>
       <workItem from="1760610703567" duration="4498000" />
+      <workItem from="1760616894341" duration="2760000" />
     </task>
     <servers />
   </component>

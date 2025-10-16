@@ -17,7 +17,57 @@ public class UzimaDatabase {
         return DriverManager.getConnection(jdbcUrl, username, password);
     }
 
-    // Register Logic
+    // =========================================================
+    //               ADMIN REGISTRATION AND LOGIN LOGIC
+    // =========================================================
+
+    public static void insertAdmin(String admin, String uniqueKey, String password) {
+        String sql = "INSERT INTO admin (admin, uniqueKey, password) VALUES (?, ?, ?)";
+
+        try (Connection connection = connect();
+            PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            // Set parameters
+            pstmt.setString(1, admin);
+            pstmt.setString(2, uniqueKey);
+            pstmt.setString(3, password);
+
+            // Execute the insert command
+            pstmt.executeUpdate();
+            System.out.println("Admin inserted successfully!");
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error while inserting admin!");
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean checkAdminCredentials(String uniqueKey, String password) {
+        String sql = "SELECT * FROM admin WHERE uniqueKey = ?";
+
+        try (Connection connection = connect();
+            PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, uniqueKey);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                String storedPassword = rs.getString("password");
+                return storedPassword.equals(password);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // =========================================================
+    //               ADMIN REGISTRATION AND LOGIN LOGIC
+    // =========================================================
+
+
+
+    // =========================================================
+    //               USER REGISTRATION AND LOGIN LOGIC
+    // =========================================================
+
     public static boolean userExists(String username, String email) {
         String sql = "SELECT * FROM users WHERE username = ? OR email = ?";
 
@@ -72,8 +122,16 @@ public class UzimaDatabase {
         }
         return false;
     }
-    // Login logic
 
+    // =========================================================
+    //               USER REGISTRATION AND LOGIN LOGIC
+    // =========================================================
+
+
+
+    // =========================================================
+    //                UZIMA BOREHOLE DRILLING SYSTEM LOGIC
+    // =========================================================
 
     // Client
     public static boolean clientExists(String fullname, String phone) {
@@ -139,6 +197,13 @@ public class UzimaDatabase {
         }
     }
     // Service
+
+    // =========================================================
+    //                UZIMA BOREHOLE DRILLING SYSTEM LOGIC
+    // =========================================================
+
+
+    //===============/////////////////////////////////////////////////////////////////////===========/
 
     // =========================================================
     //               REPORT DATA FOR ADMIN PANEL

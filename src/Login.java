@@ -13,6 +13,25 @@ public class Login extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
 
+        // Create menu bar
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+
+        // Create menu
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+
+        JMenuItem menuItemAdmin = new JMenuItem("Admin");
+        menu.add(menuItemAdmin);
+
+        menuItemAdmin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new AdminLogin().setVisible(true);
+                Login.this.dispose();
+            }
+        });
+
         // Create a panel with null layout for custom component positioning
         JPanel panel = new JPanel();
         panel.setLayout(null);

@@ -1,4 +1,3 @@
-// ClientDashboard.java
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -43,12 +42,6 @@ public class ClientDashboard extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(new Color(0x0DBFAE));
         add(mainPanel);
-
-//        JLabel titleLabel = new JLabel("ClientDashBoard");
-//        titleLabel.setBounds(10, 20, 300, 30);
-//        titleLabel.setForeground(Color.WHITE);
-//        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
-//        mainPanel.add(titleLabel);
 
         // Sidebar panel for labels
         JPanel sidebar = new JPanel();

@@ -146,16 +146,19 @@ public class Client extends JFrame {
                 String phone = phoneField.getText().trim();
                 String address = addressField.getText().trim();
                 String boreholeLocation = locationField.getText().trim();
+                String clientCategory = clientCategoryCombo.getSelectedItem().toString();
+                String surveyFee = surveyFeesField.getText().trim();
+                String localAuthorityFee = localAuthorityFeesField.getText().trim();
 
                 // Phone validation
-                String validPhone = "\\+?[0-9\\-\\s]{6,15}";
+                String validPhone = "^(?:\\+254(7|1)\\d{7}|0(7|1)\\d{7})$";
 
-                if (name.isEmpty() || address.isEmpty() || phone.isEmpty() || boreholeLocation.isEmpty()) {
+                if (name.isEmpty() || address.isEmpty() || phone.isEmpty() || boreholeLocation.isEmpty() || clientCategory.isEmpty() || surveyFee.isEmpty() || localAuthorityFee.isEmpty()) {
                     JOptionPane.showMessageDialog(Client.this, "Please fill all fields.", "Validation", JOptionPane.WARNING_MESSAGE);
                     return;
                 }else {
                     if (!phone.matches(validPhone)) {
-                        JOptionPane.showMessageDialog(Client.this, "Please enter a valid phone number.", "Validation", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(Client.this, "Please enter a valid Kenyan phone number (e.g. 0712345678 or +254712345678).", "Validation", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
                     try {
@@ -164,7 +167,7 @@ public class Client extends JFrame {
                             JOptionPane.showMessageDialog(Client.this, "Client or phone already exists. Please use a different one.");
                         } else {
                             // Insert the user into the database
-                            UzimaDatabase.insertClient(name, phone, address, boreholeLocation);
+                            UzimaDatabase.insertClient(name, phone, address, boreholeLocation,clientCategory, surveyFee, localAuthorityFee);
                             JOptionPane.showMessageDialog(Client.this, "Client Details successful!");
 
                             // Back to Dashboard

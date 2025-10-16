@@ -11,6 +11,32 @@ public class Services extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+        // Create menu bar
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+
+        // Create menu
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+
+        // Create menu items
+        JMenuItem menuItemGoBack = new JMenuItem("Back");
+        JMenuItem menuItemSignOut = new JMenuItem("Logout");
+
+        // Add menu items to menu
+        menu.add(menuItemGoBack);
+        menu.add(menuItemSignOut);
+
+        menuItemGoBack.addActionListener(e -> {
+            new ClientDashboard().setVisible(true);
+            Services.this.dispose();
+        });
+
+        menuItemSignOut.addActionListener(e -> {
+            new Login().setVisible(true);
+            Services.this.dispose();
+        });
+
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(new Color(0x0DBFAE));

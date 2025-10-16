@@ -13,25 +13,18 @@ public class AdminPanel extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // === MENU BAR ===
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
+
         JMenu menu = new JMenu("Menu");
         menuBar.add(menu);
 
-        JMenuItem menuItemGoBack = new JMenuItem("Back");
         JMenuItem menuItemSignOut = new JMenuItem("Logout");
 
-        menu.add(menuItemGoBack);
         menu.add(menuItemSignOut);
 
-        menuItemGoBack.addActionListener(e -> {
-            new UserLogin().setVisible(true);
-            dispose();
-        });
-
         menuItemSignOut.addActionListener(e -> {
-            new UserLogin().setVisible(true);
+            new Login().setVisible(true);
             dispose();
         });
 

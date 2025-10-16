@@ -5,24 +5,26 @@ import java.net.URL;
 public class Progress extends JFrame {
     private Timer timer;
     private double angle = 0;
+    private final Register registerPage;
 
-    public Progress() {
+    public Progress(Register registerPage) {
+        this.registerPage = registerPage;
+        setupFrame();
+        showProgressBarScreen();
+    }
+
+    private void setupFrame() {
         setTitle("Uzima Borehole Drilling System");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-
-        showProgressBarScreen();
     }
 
     private void showProgressBarScreen() {
-        // ✅ Custom panel for background + rotating dots
         JPanel progressPanel = new JPanel() {
             Image backgroundImage;
-
             {
-                // Load image once instead of in every repaint()
                 URL imageUrl = getClass().getResource("/Resource/Progress.jpeg");
                 if (imageUrl != null) {
                     backgroundImage = new ImageIcon(imageUrl).getImage();
@@ -32,12 +34,9 @@ public class Progress extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
-                // ✅ Smooth rendering
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-                // ✅ Draw background
                 if (backgroundImage != null) {
                     g2.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
                 } else {
@@ -45,7 +44,6 @@ public class Progress extends JFrame {
                     g2.fillRect(0, 0, getWidth(), getHeight());
                 }
 
-                // ✅ Rotating loader dots
                 g2.setColor(Color.WHITE);
                 int centerX = getWidth() / 2;
                 int centerY = getHeight() / 2 + 30;
@@ -65,7 +63,6 @@ public class Progress extends JFrame {
         };
 
         progressPanel.setLayout(new BorderLayout());
-
         JLabel titleLabel = new JLabel("Uzima Borehole Drilling System", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 26));
         titleLabel.setForeground(new Color(0x003366));
@@ -82,10 +79,8 @@ public class Progress extends JFrame {
             angle += Math.PI / 30;
             repaint();
         });
-
         timer.start();
 
-        // ✅ Stop animation after a fixed duration (e.g., 3.5 seconds)
         new Timer(3500, e -> {
             timer.stop();
             showRegisterPage();
@@ -94,17 +89,15 @@ public class Progress extends JFrame {
 
     private void showRegisterPage() {
         SwingUtilities.invokeLater(() -> {
-            new Register().setVisible(true);
+            registerPage.setVisible(true);
             dispose();
         });
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Progress();
-            }
+        SwingUtilities.invokeLater(() -> {
+            Register register = new Register();
+            new Progress(register);
         });
     }
 }

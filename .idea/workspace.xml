@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a082b6ff-8762-4645-b0c4-7a9ec6fcd60c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/AdminPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +42,7 @@
     &quot;Application.Client.executor&quot;: &quot;Run&quot;,
     &quot;Application.ClientDashboard.executor&quot;: &quot;Run&quot;,
     &quot;Application.Login.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProgressBar.executor&quot;: &quot;Run&quot;,
     &quot;Application.Services.executor&quot;: &quot;Run&quot;,
     &quot;Application.UniversalLogin.executor&quot;: &quot;Run&quot;,
     &quot;Application.UniversalRegister.executor&quot;: &quot;Run&quot;,
@@ -51,6 +52,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mousa/PycharmProjects/Uzima-Borehole-Drilling-System/src/Resource&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -60,6 +62,17 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Resource" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Resource" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Resource" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -78,7 +91,9 @@
       <workItem from="1760610703567" duration="4498000" />
       <workItem from="1760616894341" duration="2760000" />
       <workItem from="1760633361282" duration="3629000" />
-      <workItem from="1760638454492" duration="338000" />
+      <workItem from="1760638454492" duration="2990000" />
+      <workItem from="1760641530187" duration="55000" />
+      <workItem from="1760641611838" duration="9000" />
     </task>
     <servers />
   </component>

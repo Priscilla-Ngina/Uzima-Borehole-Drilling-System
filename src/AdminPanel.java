@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.*;
 
 public class AdminPanel extends JFrame {
     private JPanel mainPanel;
@@ -27,12 +26,12 @@ public class AdminPanel extends JFrame {
         menu.add(menuItemSignOut);
 
         menuItemGoBack.addActionListener(e -> {
-            new Login().setVisible(true);
+            new UserLogin().setVisible(true);
             dispose();
         });
 
         menuItemSignOut.addActionListener(e -> {
-            new Login().setVisible(true);
+            new UserLogin().setVisible(true);
             dispose();
         });
 

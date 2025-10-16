@@ -1,0 +1,155 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class UserRegister extends JFrame {
+    public UserRegister(){
+        setTitle("Uzima Borehole Registration");
+        setSize(550,360);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBackground(new Color(0x0DBFAE));
+        add(panel);
+
+        JLabel titleLabel = new JLabel("Register To Uzima Borehole Drilling System");
+        titleLabel.setBounds(120, 20, 370, 25);
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        panel.add(titleLabel);
+
+        JLabel usernameLabel = new JLabel("Username:");
+        usernameLabel.setBounds(20, 60, 150, 25);
+        usernameLabel.setForeground(Color.BLACK);
+        panel.add(usernameLabel);
+
+        JTextField usernameField = new JTextField(15);
+        usernameField.setBounds(180, 60, 200, 25);
+        usernameField.setForeground(Color.BLACK);
+        usernameField.setBackground(new Color(0x47E1E8));
+        panel.add(usernameField);
+
+        JLabel emailLabel = new JLabel("Email:");
+        emailLabel.setBounds(20, 100, 150, 25);
+        emailLabel.setForeground(Color.BLACK);
+        panel.add(emailLabel);
+
+        JTextField emailField = new JTextField(15);
+        emailField.setBounds(180, 100, 200, 25);
+        emailField.setForeground(Color.BLACK);
+        emailField.setBackground(new Color(0x47E1E8));
+        panel.add(emailField);
+
+        JLabel passwordLabel = new JLabel("Password:");
+        passwordLabel.setBounds(20, 140, 150, 25);
+        passwordLabel.setForeground(Color.BLACK);
+        panel.add(passwordLabel);
+        JPasswordField passwordField = new JPasswordField(15);
+        passwordField.setBounds(180, 140, 200, 25);
+        passwordField.setForeground(Color.BLACK);
+        passwordField.setBackground(new Color(0x47E1E8));
+        panel.add(passwordField);
+
+        JLabel confirmPasswordLabel = new JLabel("Confirm Password:");
+        confirmPasswordLabel.setBounds(20, 180, 150, 25);
+        confirmPasswordLabel.setForeground(Color.BLACK);
+        panel.add(confirmPasswordLabel);
+        JPasswordField confirmPasswordField = new JPasswordField(15);
+        confirmPasswordField.setBounds(180, 180, 200, 25);
+        confirmPasswordField.setForeground(Color.BLACK);
+        confirmPasswordField.setBackground(new Color(0x47E1E8));
+        panel.add(confirmPasswordField);
+
+        JButton btnRegister = new JButton("REGISTER");
+        btnRegister.setBounds(225, 220, 100, 25);
+        btnRegister.setBackground(new Color(0x47E1E8));
+        panel.add(btnRegister);
+
+        JLabel loginLabel = new JLabel("Already have an account? Sign In");
+        loginLabel.setBounds(170, 270, 250, 25);
+        loginLabel.setForeground(Color.BLACK);
+        panel.add(loginLabel);
+
+        loginLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new UserLogin().setVisible(true);
+                UserRegister.this.dispose();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                loginLabel.setText("<html><u>Already have an account? Sign In</u></html>");
+                loginLabel.setForeground(new Color(0x00FBF3));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                loginLabel.setText("Already have an account? Sign In");
+                loginLabel.setForeground(Color.BLACK);
+            }
+        });
+
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameField.getText();
+                String email = emailField.getText();
+                String password = new String(passwordField.getPassword());
+                String confirmPassword = new String(passwordField.getPassword());
+
+                // Regular expression to ensure the email ends with @gmail.com
+                String emailPattern = "^[\\w-\\.]+@gmail\\.com$";
+
+                if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                    JOptionPane.showMessageDialog(UserRegister.this, "Please fill all the fields.");
+                }else{
+                    // Check if email matches the @gmail.com pattern
+                    if (!email.matches(emailPattern)) {
+                        JOptionPane.showMessageDialog(UserRegister.this, "Please enter a valid Gmail address.(example@gmail.com)");
+                        return;  // Return early if email is invalid
+                    }
+
+                    // Check if password and confirm password match
+                    if (!password.equals(confirmPassword)) {
+                        JOptionPane.showMessageDialog(UserRegister.this, "Passwords do not match. Please try again.");
+                        return;  // Return early if passwords do not match
+                    }
+
+                    try {
+                        // Check if the username or email already exists
+                        if (UzimaDatabase.userExists(username, email)) {
+                            JOptionPane.showMessageDialog(UserRegister.this, "Username or email already exists. Please use a different one.");
+                        } else {
+                            // Insert the user into the database
+                            UzimaDatabase.insertUser(username, email, password);
+                            JOptionPane.showMessageDialog(UserRegister.this, "Registration successful!");
+
+                            // Open the login window after successful registration
+                            UserLogin login = new UserLogin();
+                            login.setVisible(true);
+                            UserRegister.this.dispose();
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(UserRegister.this, "An error occurred while registering.");
+                    }
+                }
+            }
+        });
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new UserRegister();
+            }
+        });
+    }
+}

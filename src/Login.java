@@ -1,126 +1,166 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
-public class Login extends JFrame{
-    public Login(){
+public class Login extends JFrame {
+    private JComboBox<String> roleCombo;
+    private JLabel usernameLabel, uniqueKeyLabel, passwordLabel;
+    private JTextField usernameField, uniqueKeyField;
+    private JPasswordField passwordField;
+    private JButton btnLogin;
+    private JLabel registerLabel;
+
+    public Login() {
         setTitle("Uzima Borehole Drilling System");
-        setSize(500,350);
+        setSize(500, 380);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setVisible(true);
 
-        // Create menu bar
-        JMenuBar menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
-
-        // Create menu
-        JMenu menu = new JMenu("Menu");
-        menuBar.add(menu);
-
-        JMenuItem menuItemAdmin = new JMenuItem("Admin");
-        menu.add(menuItemAdmin);
-
-        menuItemAdmin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new AdminLogin().setVisible(true);
-                Login.this.dispose();
-            }
-        });
-
-        // Create a panel with null layout for custom component positioning
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(new Color(0x0DBFAE));
         add(panel);
 
-        JLabel titleLabel = new JLabel("Welcome To Uzima Borehole Drilling System");
-        titleLabel.setBounds(70, 50, 370, 25);
-        titleLabel.setForeground(Color.WHITE);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        panel.add(titleLabel);
+        // Role selector
+        JLabel roleLabel = new JLabel("Role:");
+        roleLabel.setBounds(40, 60, 100, 25);
+        roleLabel.setForeground(Color.BLACK);
+        panel.add(roleLabel);
 
-        JLabel usernameLabel = new JLabel("Username:");
-        usernameLabel.setBounds(40, 120, 150, 25);
+        roleCombo = new JComboBox<>(new String[]{"User", "Admin"});
+        roleCombo.setBounds(160, 60, 200, 25);
+        panel.add(roleCombo);
+
+        // Username
+        usernameLabel = new JLabel("Username:");
+        usernameLabel.setBounds(40, 100, 100, 25);
         usernameLabel.setForeground(Color.BLACK);
         panel.add(usernameLabel);
-        JTextField usernameField = new JTextField(15);
-        usernameField.setBounds(160, 120, 200, 25);
-        usernameField.setForeground(Color.BLACK);
+
+        usernameField = new JTextField(15);
+        usernameField.setBounds(160, 100, 200, 25);
         usernameField.setBackground(new Color(0x47E1E8));
+        usernameField.setForeground(Color.BLACK);
         panel.add(usernameField);
 
-        JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setBounds(40, 160, 150, 25);
+        // Unique Key (for admin)
+        uniqueKeyLabel = new JLabel("Unique Key:");
+        uniqueKeyLabel.setBounds(40, 100, 100, 25);
+        uniqueKeyLabel.setForeground(Color.BLACK);
+        uniqueKeyLabel.setVisible(false);
+        panel.add(uniqueKeyLabel);
+
+        uniqueKeyField = new JTextField(15);
+        uniqueKeyField.setBounds(160, 100, 200, 25);
+        uniqueKeyField.setBackground(new Color(0x47E1E8));
+        uniqueKeyField.setForeground(Color.BLACK);
+        uniqueKeyField.setVisible(false);
+        panel.add(uniqueKeyField);
+
+        // Password
+        passwordLabel = new JLabel("Password:");
+        passwordLabel.setBounds(40, 140, 100, 25);
         passwordLabel.setForeground(Color.BLACK);
         panel.add(passwordLabel);
-        JPasswordField passwordField = new JPasswordField(15);
-        passwordField.setBounds(160, 160, 200, 25);
-        passwordField.setForeground(Color.BLACK);
+
+        passwordField = new JPasswordField(15);
+        passwordField.setBounds(160, 140, 200, 25);
         passwordField.setBackground(new Color(0x47E1E8));
+        passwordField.setForeground(Color.BLACK);
         panel.add(passwordField);
 
-        JButton btnLogin = new JButton("LOGIN");
-        btnLogin.setBounds(210, 200, 100, 30);
+        // Login button
+        btnLogin = new JButton("LOGIN");
+        btnLogin.setBounds(200, 190, 100, 30);
         btnLogin.setBackground(new Color(0x47E1E8));
         panel.add(btnLogin);
 
-        JLabel registerLabel = new JLabel("No account? Sign up");
-        registerLabel.setBounds(190, 260, 230, 25);
+        // Register label
+        registerLabel = new JLabel("No account? Sign up");
+        registerLabel.setBounds(190, 240, 200, 25);
         registerLabel.setForeground(Color.BLACK);
         panel.add(registerLabel);
 
+        // Toggle role fields
+        roleCombo.addActionListener(e -> toggleFields());
+
+        // Login action
+        btnLogin.addActionListener(e -> handleLogin());
+
+        // Register label click
         registerLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 new Register().setVisible(true);
-                Login.this.dispose();
+                dispose();
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                // Optional: underline the text when the mouse hovers over it
                 registerLabel.setText("<html><u>No account? Sign up</u></html>");
                 registerLabel.setForeground(new Color(0x00FBF3));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                // Remove underline when the mouse exits
-                registerLabel.setText("No account? Sign Up");
+                registerLabel.setText("No account? Sign up");
                 registerLabel.setForeground(Color.BLACK);
             }
         });
 
-        btnLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String enteredUsername = usernameField.getText();
-                String enteredPassword = new String(passwordField.getPassword());
-
-                if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Please fill all the fields.");
-                } else {
-                    // Always check the database for valid credentials
-                    boolean isValidUser = UzimaDatabase.checkCredentials(enteredUsername, enteredPassword);
-
-                    if (isValidUser) {
-                        JOptionPane.showMessageDialog(Login.this, "Login successful!");
-                        // Proceed to the dashboard or main application
-                        ClientDashboard clientDashboard = new ClientDashboard();
-                        clientDashboard.setVisible(true);
-                        Login.this.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(Login.this, "Incorrect username or password. Please try again.");
-                    }
-                }
-            }
-        });
+        setVisible(true);
     }
+
+    // Switch visible fields based on role
+    private void toggleFields() {
+        String selectedRole = (String) roleCombo.getSelectedItem();
+        boolean isAdmin = selectedRole.equals("Admin");
+
+        usernameLabel.setVisible(!isAdmin);
+        usernameField.setVisible(!isAdmin);
+        uniqueKeyLabel.setVisible(isAdmin);
+        uniqueKeyField.setVisible(isAdmin);
+    }
+
+    // Handle login logic for both roles
+    private void handleLogin() {
+        String selectedRole = (String) roleCombo.getSelectedItem();
+        String password = new String(passwordField.getPassword());
+
+        if (selectedRole.equals("Admin")) {
+            String uniqueKey = uniqueKeyField.getText();
+            if (uniqueKey.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please fill all the fields.");
+                return;
+            }
+
+            boolean isValidAdmin = UzimaDatabase.checkAdminCredentials(uniqueKey, password);
+            if (isValidAdmin) {
+                JOptionPane.showMessageDialog(this, "Admin Login successful!");
+                new AdminPanel().setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrect unique key or password.");
+            }
+
+        } else { // User
+            String username = usernameField.getText();
+            if (username.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please fill all the fields.");
+                return;
+            }
+
+            boolean isValidUser = UzimaDatabase.checkCredentials(username, password);
+            if (isValidUser) {
+                JOptionPane.showMessageDialog(this, "Login successful!");
+                new ClientDashboard().setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrect username or password.");
+            }
+        }
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -130,3 +170,4 @@ public class Login extends JFrame{
         });
     }
 }
+

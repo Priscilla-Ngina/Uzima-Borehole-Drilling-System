@@ -29,12 +29,12 @@ public class ClientDashboard extends JFrame {
         menu.add(menuItemSignOut);
 
         menuItemGoBack.addActionListener(e -> {
-            new Login().setVisible(true);
+            new UserLogin().setVisible(true);
             ClientDashboard.this.dispose();
         });
 
         menuItemSignOut.addActionListener(e -> {
-            new Login().setVisible(true);
+            new UserLogin().setVisible(true);
             ClientDashboard.this.dispose();
         });
 

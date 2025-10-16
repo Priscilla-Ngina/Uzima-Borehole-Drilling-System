@@ -25,7 +25,7 @@ public class AdminLogin extends JFrame {
         menuItemAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Login().setVisible(true);
+                new UserLogin().setVisible(true);
                 AdminLogin.this.dispose();
             }
         });

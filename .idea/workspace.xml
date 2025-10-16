@@ -7,8 +7,11 @@
     <list default="true" id="a082b6ff-8762-4645-b0c4-7a9ec6fcd60c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UzimaDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UzimaDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserRegister.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +46,8 @@
     "Application.ClientDashboard.executor": "Run",
     "Application.Login.executor": "Run",
     "Application.Services.executor": "Run",
+    "Application.UniversalLogin.executor": "Run",
+    "Application.UniversalRegister.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
@@ -75,6 +80,7 @@
       <updated>1760519662829</updated>
       <workItem from="1760610703567" duration="4498000" />
       <workItem from="1760616894341" duration="2760000" />
+      <workItem from="1760633361282" duration="3629000" />
     </task>
     <servers />
   </component>

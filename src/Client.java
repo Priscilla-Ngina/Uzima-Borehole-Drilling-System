@@ -33,7 +33,7 @@ public class Client extends JFrame {
         });
 
         menuItemSignOut.addActionListener(e -> {
-            new Login().setVisible(true);
+            new UserLogin().setVisible(true);
             Client.this.dispose();
         });
 

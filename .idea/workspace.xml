@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a082b6ff-8762-4645-b0c4-7a9ec6fcd60c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Uzima Borehole Drilling System/AdminPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Progress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Progress.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +40,7 @@
     &quot;Application.Client.executor&quot;: &quot;Run&quot;,
     &quot;Application.ClientDashboard.executor&quot;: &quot;Run&quot;,
     &quot;Application.Login.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Progress.executor&quot;: &quot;Run&quot;,
     &quot;Application.ProgressBar.executor&quot;: &quot;Run&quot;,
     &quot;Application.Services.executor&quot;: &quot;Run&quot;,
     &quot;Application.UniversalLogin.executor&quot;: &quot;Run&quot;,
@@ -94,6 +93,11 @@
       <workItem from="1760638454492" duration="2990000" />
       <workItem from="1760641530187" duration="55000" />
       <workItem from="1760641611838" duration="9000" />
+      <workItem from="1760641835102" duration="472000" />
+      <workItem from="1760642951827" duration="806000" />
+      <workItem from="1760643851152" duration="917000" />
+      <workItem from="1760678710686" duration="562000" />
+      <workItem from="1760679307814" duration="177000" />
     </task>
     <servers />
   </component>

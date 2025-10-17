@@ -108,6 +108,18 @@ public class Register extends JFrame {
                 new Login().setVisible(true);
                 dispose();
             }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                loginLabel.setText("<html><u>Already have an account? Sign In</u></html>");
+                loginLabel.setForeground(new Color(0x00FBF3));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                loginLabel.setText("Already have an account? Sign In");
+                loginLabel.setForeground(Color.BLACK);
+            }
         });
 
 
